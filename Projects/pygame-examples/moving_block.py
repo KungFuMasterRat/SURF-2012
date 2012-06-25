@@ -23,14 +23,17 @@ r = s.get_rect()  # get the rectangle bounds for the surface
 
 clock = pygame.time.Clock()  # make a clock
 
-while 1:  # infinite loop
-    clock.tick(30)  # limit framerate to 30 FPS
 
+def handle_events():
     for event in pygame.event.get():  # if something clicked
         if event.type == pygame.QUIT:  # if EXIT clicked
             sys.exit()  # close cleanly
 
+
+def animate():
+    global r
     r = r.move(speed)  # move the box by the "speed" coordinates
+
      # if we hit a  wall, change direction
     if r.left < 0 or r.right > width:
         speed[0] = -speed[0]
@@ -38,6 +41,20 @@ while 1:  # infinite loop
     if r.top < 0 or r.bottom > height:
         speed[1] = -speed[1]
 
+
+def redraw():
     screen.fill((0, 0, 0))  # make redraw background black
     screen.blit(s, r)  # render the surface into the rectangle
     pygame.display.flip()  # update the screen
+
+
+def main():
+    while 1:  # infinite loop
+        clock.tick(30)  # limit framerate to 30 FPS
+
+        handle_events()
+        animate()
+        redraw()
+
+# DO IT!
+main()
