@@ -5,21 +5,18 @@ http://www.swharden.com/blog/2010-06-15-simplest-case-pygame-example/
 """
 
 
-import pygame  ##always import modules that you are using
+import pygame
 import sys
-import time
-import random
 
 pygame.init()  # load pygame modules ##Initialize itself
 
-size = width, height = 300, 240  # size of window ##Arg unpack
+size = width, height = 1020, 240  # size of window ##Arg unpack
 
 speed = [4, 4]  # speed and direction ##Speed dx and dy
 
 screen = pygame.display.set_mode(size)  # make window ## set the size of its screen
 
-s_size = s_width, s_height = 100, 50
-s = pygame.Surface(s_size)  # create surface 100px by 50px ##new surface; this is the actual 'physical' box
+s = pygame.Surface((100, 50))  # create surface 100px by 50px ##new surface; this is the actual 'physical' box
 ##S is defined in pygame; it is an object and class is pygame.Surface
 s.fill((33, 66, 99))  # color the surface blue #RGB values to color the box
 ##Actually a method. Functions attached to objects =def
@@ -35,33 +32,27 @@ def handle_events(): #handles events: while it goes it the animate loop
             sys.exit()  # close cleanly
 
 
-_last_called = time.time()
-def animate():
-    global r
-    global _last_called
+def animate(): ##new funnction called animate
+    global r ##effects global/module-level namespace of r (prviously defined)
+    r = r.move(speed)  # move the box by the "speed" coordinates
 
-    now = time.time()
-    if now - _last_called > 2:  # 2 is in seconds
-        # Remember when I was called last
-        _last_called = now  ##appears every 2 seconds (goes through 60x)
+     # if we hit a  wall, change direction
+    if r.left < 0 or r.right > width: #greater than width of screen; 0
+        speed[0] = -speed[0] ##pong logic; neg is telling to flip but maintain speed
+##can mult reversal speed to slow down
+    if r.top < 0 or r.bottom > height:
+        speed[1] = -speed[1] *0.99 ## 1 is the second item being called in dx dy
 
-        # Determine a new random position
-        x = random.randint(0, width-s_width) ##calls a new random position-- parenthesis is within 0 and width
-        y = random.randint(0, height-s_height)
-
-        # pygame.Rect needs 'left', 'top', 'width', 'height'
-        # The 100, and the 50 are borrowed from the Surface above
-        r = pygame.Rect(x, y, s_width, s_height)
 
 def redraw(): #once we move box, we redraw screen, erase screen, redraw box in new position
     screen.fill((0, 0, 0))  # make redraw background black ##draws a black box
-    screen.blit(s, r)  # render the surface into the rectangle ##blit is to put it on the screen. takes surface and shape, saws draw surface at this position
+    screen.blit(s, r)  # render the surface into the rectangle ##takes surface and shape, saws draw surface at this position
     pygame.display.flip()  # update the screen ##dual screen that flips back and forth
 
 
 def main(): ##What tells it to move 30 times a sec
     while 1:  # infinite loop
-        clock.tick(30)  # limit framerate to 30 FPS ##clock object prv def.
+        clock.tick(10)  # limit framerate to 30 FPS ##clock object prv def.
 
         handle_events() ##associated with clock.tickstops you from faster 30x a sec; it's s throttle to remember when it needs to refresh itself
         animate()  ##this function calls these three functions we prv def.

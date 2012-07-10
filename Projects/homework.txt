@@ -1,0 +1,9 @@
+given a radius and a random degree write a python sub routine that returns the x and y coorinates 
+convert from polar to cartesian. width dive by two and height div by two gives center mark, then plus x and y gives you where you really want the box to appear
+x,y -> x+(w/2), y+(h/2)
+radius and degree to x and a y 
+
+def polar2cart(r, degree): ##mathland: 0,0 is origin, but in oygame 0,0 is top left
+
+second assignment:
+make text appear in pygame
