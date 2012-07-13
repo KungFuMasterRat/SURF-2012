@@ -2,13 +2,17 @@
 
 import math
 
-##Obtain polar coordinates from user
-r = raw_input("Please enter the r coordinate: ")
-theta = raw_input("Please enter the theta coordinate: ")
+def polar2cart(r, theta):
+    ##Conversion formulas
+    theta = theta * math.pi / 180.0
+    x = r*math.cos(theta)
+    y = r*math.sin(theta)
+    return x, y
 
-##Conversion formulas
-x = r*cos(theta)
-y = r*sin(theta)
 
-##Output the results
-print "The Cartesian coordinates for (",r",",theta,") are (",x,",",y,") 
+print polar2cart(1, 0) == (1, 0)
+print polar2cart(1, 0)
+print polar2cart(1, 90) == (0, 1)
+print polar2cart(1, 90)
+print polar2cart(1, 180) == (-1, 0)
+print polar2cart(1, 180)
