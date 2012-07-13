@@ -11,4 +11,4 @@ x = r*cos(theta)
 y = r*sin(theta)
 
 ##Output the results
-print "The Cartesian coordinates for (",r",",theta,") are (",x,",",y,")
+print "The Cartesian coordinates for (",r",",theta,") are (",x,",",y,") 
