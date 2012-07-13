@@ -9,6 +9,7 @@ import pygame  ##always import modules that you are using
 import sys
 import time
 import random
+import math
 
 pygame.init()  # load pygame modules ##Initialize itself
 
@@ -36,19 +37,31 @@ def handle_events(): #handles events: while it goes it the animate loop
 
 
 _last_called = time.time()
+_last_theta = 0 
+def polar2cart(r, theta):
+    ##Conversion formulas
+    theta = theta * math.pi / 180.0
+    x = r*math.cos(theta)
+    y = r*math.sin(theta)
+    return x, y
 def animate():
     global r
     global _last_called
-
+    global _last_theta
+    
     now = time.time()
-    if now - _last_called > 2:  # 2 is in seconds
+    if now - _last_called > .25:  # 2 is in seconds
         # Remember when I was called last
         _last_called = now  ##appears every 2 seconds (goes through 60x)
 
-        # Determine a new random position
-        x = random.randint(0, width-s_width) ##calls a new random position-- parenthesis is within 0 and width
-        y = random.randint(0, height-s_height)
-
+        _last_theta = _last_theta + 15
+        theta = _last_theta
+        x, y = polar2cart(50, theta)
+        x+= 150
+        y+=100
+        
+        print theta, x, y 
+        
         # pygame.Rect needs 'left', 'top', 'width', 'height'
         # The 100, and the 50 are borrowed from the Surface above
         r = pygame.Rect(x, y, s_width, s_height)
