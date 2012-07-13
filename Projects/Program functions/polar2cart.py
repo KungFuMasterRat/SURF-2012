@@ -1,6 +1,7 @@
 ##Converting polar to cartesian 
 
 import math
+import time
 
 def polar2cart(r, theta):
     ##Conversion formulas
@@ -9,10 +10,7 @@ def polar2cart(r, theta):
     y = r*math.sin(theta)
     return x, y
 
-
-print polar2cart(1, 0) == (1, 0)
-print polar2cart(1, 0)
-print polar2cart(1, 90) == (0, 1)
-print polar2cart(1, 90)
-print polar2cart(1, 180) == (-1, 0)
-print polar2cart(1, 180)
+r = 1
+for theta in range(0, 360, 5):
+    print r, theta, polar2cart(r, theta)
+    time.sleep(0.1)
