@@ -10,6 +10,10 @@ import sys
 import time
 import random
 import math
+import display
+
+pygame.display.set_mode((1650,1050),pygame.FULLSCREEN)
+
 
 pygame.init()  # load pygame modules ##Initialize itself
 
