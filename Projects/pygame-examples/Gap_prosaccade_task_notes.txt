@@ -22,3 +22,13 @@ What I should program:
 
 Question: Can four degrees be out farther or is it stuck with the same radius? 
 It shouldn't be stuck with the same radius.
+
+
+
+So, thinking... How would I do this:
+Need something that represents cross hairs on a screen
+I can program it to set/present instead of respawning different location. This might be easier than writing 
+a loop to have it respawn with different radius?
+
+HOW MANY TRIALS ARE THERE:
+HOW IS IT BEING PSEUDORANDOMIZED:
