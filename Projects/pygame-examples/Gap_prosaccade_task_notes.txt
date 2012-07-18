@@ -1,0 +1,24 @@
+Gap prosaccade task:
+
+Target= cross hairs
+Cue= little orange box
+
+
+-> Begins with the target at central fixation.
+-> After 2.0-2.5 second interval, the target is extinguished
+
+-> 200 msec stimulus free gap
+-> +/- 4 degree peripheral target appears
+
+-> After 500 msec, target returns to central fixation
+
+CATCH TRIALS
+-> No peripheral target and the central fixation reappears after a 700msec gap
+
+
+What I should program:
+3 separate pygames called "Gap_Prosaccade_plusfour", "Gap_Prosaccade_minusfour", "Gap_Prosaccade_catch"
+
+
+Question: Can four degrees be out farther or is it stuck with the same radius? 
+It shouldn't be stuck with the same radius.
