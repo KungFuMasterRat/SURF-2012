@@ -10,9 +10,9 @@ import sys
 import time
 import random
 import math
-import display
+import pygame.display
 
-pygame.display.set_mode((1650,1050),pygame.FULLSCREEN)
+
 
 
 pygame.init()  # load pygame modules ##Initialize itself
@@ -21,7 +21,7 @@ size = width, height = 300, 240  # size of window ##Arg unpack
 
 speed = [4, 4]  # speed and direction ##Speed dx and dy
 
-screen = pygame.display.set_mode(size)  # make window ## set the size of its screen
+screen = pygame.display.set_mode(size, pygame.FULLSCREEN)  # make window ## set the size of its screen
 
 s_size = s_width, s_height = 100, 50
 s = pygame.Surface(s_size)  # create surface 100px by 50px ##new surface; this is the actual 'physical' box
@@ -38,7 +38,11 @@ def handle_events(): #handles events: while it goes it the animate loop
     for event in pygame.event.get():  # if something clicked ##event is an object of some type defined. pygame event
         if event.type == pygame.QUIT:  # if EXIT clicked ##Type is the pygame type
             sys.exit()  # close cleanly
-
+       
+        if (event.type == pygame.KEYUP) or (event.type == pygame.KEYDOWN) :
+            print event
+            if (event.key == pygame.K_ESCAPE):
+           			sys.exit()
 
 _last_called = time.time()
 _last_theta = 0 
