@@ -63,7 +63,7 @@ def animate():
     global _last_called
     global _last_theta
     
-     now = time.time()
+    now = time.time()
     if now - _last_called > .25:  # 2 is in seconds
         # Remember when I was called last
         _last_called = now  ##appears every 2 seconds (goes through 60x)

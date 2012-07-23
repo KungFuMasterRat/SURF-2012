@@ -45,18 +45,19 @@ def handle_events(): #To close from full screen
 _last_called = time.time()
 _last_theta = 0 
 
-def stepsize(viewingDistance, degVisAng):
-    ##Conversion formulas
-    theta = theta * math.pi / 180.0
-    step = viewingDistance*math.tan(degVisAng)
+def PeripheralTargetDistance(viewingDistance, degVisAng):
+    ##Conversion for viewing distance to peripheral. 
+    degVisAng = degVisAng * math.pi / 180.0
+    periphDistance = viewingDistance*math.tan(degVisAng)
    
-    return step
+    return periphDistance
 
 def polar2cart(r, theta):
     ##Conversion formulas
     theta = theta * math.pi / 180.0
     x = r*math.cos(theta)
     y = r*math.sin(theta)
+	
     return x, y
 def animate():
     global r
