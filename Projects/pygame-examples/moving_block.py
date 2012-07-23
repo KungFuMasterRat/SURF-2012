@@ -11,11 +11,17 @@ import time
 import random
 import math
 import pygame.display
+import pygame.camera
 
 
 
 
 pygame.init()  # load pygame modules ##Initialize itself
+
+##pygame.camera.init()
+##cam =pygame.camera.Camera(0)
+##cam.start()
+
 
 size = width, height = 300, 240  # size of window ##Arg unpack
 
@@ -26,7 +32,7 @@ screen = pygame.display.set_mode(size, pygame.FULLSCREEN)  # make window ## set 
 s_size = s_width, s_height = 100, 50
 s = pygame.Surface(s_size)  # create surface 100px by 50px ##new surface; this is the actual 'physical' box
 ##S is defined in pygame; it is an object and class is pygame.Surface
-s.fill((33, 66, 99))  # color the surface blue #RGB values to color the box
+s.fill((255, 160, 0))  # color the surface blue #RGB values to color the box
 ##Actually a method. Functions attached to objects =def
 r = s.get_rect()  # get the rectangle bounds for the surface
 ##another method. Returns the rectangular bound. Surface has a color and this is the actual bounding of the object
@@ -81,12 +87,17 @@ def redraw(): #once we move box, we redraw screen, erase screen, redraw box in n
 
 
 def main(): ##What tells it to move 30 times a sec
+    ##i= 0
     while 1:  # infinite loop
         clock.tick(30)  # limit framerate to 30 FPS ##clock object prv def.
 
         handle_events() ##associated with clock.tickstops you from faster 30x a sec; it's s throttle to remember when it needs to refresh itself
         animate()  ##this function calls these three functions we prv def.
         redraw()
-
+       ## saveimage(i)
+        ##i = i + 1
+##def saveimage(frame_number): ##Saves each frame
+  ##  image = cam.get_image()
+    ##pygame.image.save(image, 'frame_%i.jpg' % frame_number)
 # DO IT!
 main() ##last thing is call main, which starts the whole thing
