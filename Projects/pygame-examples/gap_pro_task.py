@@ -65,7 +65,7 @@ def animate():
     global _last_theta
     
     now = time.time()
-if now - _last_called > .25:  # 2 is in seconds
+    if now - _last_called > .25:  # 2 is in seconds
         # Remember when I was called last
         _last_called = now  ##appears every 2 seconds (goes through 60x)
 
@@ -77,7 +77,12 @@ if now - _last_called > .25:  # 2 is in seconds
         
         print theta, x, y 
 	r = pygame.Rect(x, y, s_width, s_height)
-
+    
+def redraw(): #once we move box, we redraw screen, erase screen, redraw box in new position
+    screen.fill((0, 0, 0))  # make redraw background black ##draws a black box
+    screen.blit(s, r)  # render the surface into the rectangle ##blit is to put it on the screen. takes surface and shape, saws draw surface at this position
+    pygame.display.flip() 
+    
 def main(): ##What tells it to move 30 times a sec
     ##i= 0
     while 1:  # infinite loop
