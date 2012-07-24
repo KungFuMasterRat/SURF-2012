@@ -44,6 +44,9 @@ random.shuffle (cases)
 
 on_case = [False, False, False]
 case_times = [0, 3, 6]
+case_stop_times = [3, 6, 9]
+case_over = [False, False, False]
+time_between_changes = 0.033333333333333
 
 ##defined four functions:
 def handle_events(): #handles events: while it goes it the animate loop
@@ -84,8 +87,15 @@ def animate():
         if now -_start_time > case_times [i] and not on_case [i]: 
             _last_theta = cases [i]
             on_case[i] = True 
+        if now - _start_time > case_stop_times [i] and not case_over [i]: 
+            case_over [i] = True
+            r = pygame.Rect (-100, -100, 0, 0)
+            redraw ()
+            time.sleep (2) 
+            if i + 1 == len(case_over):
+                sys.exit (0)
         
-    if now - _last_called > .25:  # 2 is in seconds
+    if now - _last_called > time_between_changes:  # 2 is in seconds
         # Remember when I was called last
         _last_called = now  ##appears every 2 seconds (goes through 60x)
 
