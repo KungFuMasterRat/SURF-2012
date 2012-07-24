@@ -39,13 +39,22 @@ r = s.get_rect()  # get the rectangle bounds for the surface
 clock = pygame.time.Clock()  # make a clock
 ##how often you redraw the frames; nothing to do with the speed, just frame rate
 
-cases= [0, -45, 45]
+##cases= [0, -45, 45]
+##random.shuffle (cases) 
+
+##on_case = [False, False, False]
+##case_times = [0, 3, 6]
+##case_stop_times = [3, 6, 9]
+##case_over = [False, False, False]
+##time_between_changes = 0.033333333333333
+
+cases= [0]
 random.shuffle (cases) 
 
-on_case = [False, False, False]
-case_times = [0, 3, 6]
-case_stop_times = [3, 6, 9]
-case_over = [False, False, False]
+on_case = [False]
+case_times = [0]
+case_stop_times = [3]
+case_over = [False]
 time_between_changes = 0.033333333333333
 
 ##defined four functions:
