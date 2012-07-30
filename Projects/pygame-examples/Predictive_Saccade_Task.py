@@ -131,21 +131,37 @@ def animate():
 def redraw(): #once we move box, we redraw screen, erase screen, redraw box in new position
     screen.fill((255, 255, 255))  # make redraw background black ##draws a black box
     screen.blit(s, r)  # render the surface into the rectangle ##blit is to put it on the screen. takes surface and shape, saws draw surface at this position
+    
+    line_color = (124, 124, 124)
+    line_length = 50 
+    pygame.draw.line(
+        screen,
+        line_color,
+        (width/2, height/2 - line_length/2),
+        (width/2, height/2 + line_length/2),
+        3
+    )
+    pygame.draw.line(
+        screen,
+        line_color,
+        (width/2 - line_length/2, height/2),
+        (width/2 + line_length/2, height/2),
+        3 ##line thickness
+    )
     pygame.display.flip()  # update the screen ##dual screen that flips back and forth
-
-
 def main(): ##What tells it to move 30 times a sec
-    ##i= 0
+    i= 0
     while 1:  # infinite loop
         ##clock.tick(10)  # limit framerate to 30 FPS ##clock object prv def.
 
-        ##handle_events() ##associated with clock.tickstops you from faster 30x a sec; it's s throttle to remember when it needs to refresh itself
+        handle_events() ##associated with clock.tickstops you from faster 30x a sec; it's s throttle to remember when it needs to refresh itself
         animate()  ##this function calls these three functions we prv def.
         redraw()
-       ## saveimage(i)
-        ##i = i + 1
-##def saveimage(frame_number): ##Saves each frame
-  ##  image = cam.get_image()
-    ##pygame.image.save(image, 'frame_%i.jpg' % frame_number)
+  
+        saveimage(i)
+        i = i + 1
+def saveimage(frame_number): ##Saves each frame
+    
+    pygame.image.save(screen, 'data\\frame_%i.jpg' % frame_number)
 # DO IT!
 main() ##last thing is call main, which starts the\\\\\\\\\\\\\\\\\\\\\ whole thing
